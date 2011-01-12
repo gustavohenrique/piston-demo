@@ -1,0 +1,26 @@
+[
+    {
+        "pk": 1, 
+        "model": "goal.goal", 
+        "fields": {
+            "repeat": false, 
+            "achieved": false, 
+            "longitude": -43.179487999999999, 
+            "latitude": -22.904764, 
+            "owner": 1, 
+            "desc": "Buy cookies"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "goal.goal", 
+        "fields": {
+            "repeat": false, 
+            "achieved": true, 
+            "longitude": -43.176076000000002, 
+            "latitude": -22.904959999999999, 
+            "owner": 1, 
+            "desc": "Buy medicine"
+        }
+    }
+]
