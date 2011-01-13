@@ -21,7 +21,7 @@ class TestModels(TestCase):
     def setUp(self):
         self.user = User.objects.get(username='admin')
 
-    def test_create_basic_goal(self):
+    def test_create_goal(self):
         goal = factory(owner=self.user)
         goal.save()
         self.assertEquals(3, goal.id)
@@ -29,3 +29,11 @@ class TestModels(TestCase):
     def test_find_not_achieved_by_user(self):
         goals = Goal.objects.filter(owner=self.user, achieved=False)
         self.assertEquals(1, goals.count())
+
+
+from django.test.client import Client
+
+class TestViews(TestCase):
+
+    def setUp(self):
+        self.client = Client()
