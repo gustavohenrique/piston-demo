@@ -32,8 +32,21 @@ class TestModels(TestCase):
 
 
 from django.test.client import Client
+import base64
 
-class TestViews(TestCase):
+class TestApi(TestCase):
+
+    fixtures = ['auth.json', 'goal.json']
 
     def setUp(self):
         self.client = Client()
+
+    def test_invalid_auth_header(self):
+        response = self.client.get('/api/goals/')
+        self.assertEquals(response.status_code, 401)
+
+    def test_return_goals_by_user(self):
+        auth_string = 'Basic %s' % base64.encodestring('admin:admin').rstrip()
+        response = self.client.get('/api/goals/', HTTP_AUTHORIZATION=auth_string)
+        self.assertEquals(200, response.status_code) 
+
