@@ -9,5 +9,6 @@ goal_resource = Resource(handler=GoalHandler, authentication=auth)
 
 urlpatterns = patterns('',
     (r'^goals/$', goal_resource),
-    #(r'^goal/(?P<sigla_estado>[^/]+)', cidade_resource),
+    #(r'^goals/(?P<sigla_estado>[^/]+)', cidade_resource),
+    (r'^goals/add/$)', goal_resource),
 )

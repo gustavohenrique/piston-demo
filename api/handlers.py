@@ -6,12 +6,12 @@ from goal.models import *
 
 class GoalHandler(BaseHandler):
     model = Goal
-    allowed_methods = ('GET',)
+    allowed_methods = ['GET', 'POST']
 
     def read(self, request):
         return Goal.objects.filter(owner=request.user, achieved=False)
 
-    #def create(self, request):
-    #    if request.content_type and request.data:
-    #        data = request.data
-    #        params = dict(owner=request.user, 
+    def create(self, request):
+        if request.POST:
+            data = request.POST
+            print data #params = dict(owner=request.user, 

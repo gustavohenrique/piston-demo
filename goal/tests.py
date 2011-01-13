@@ -40,13 +40,17 @@ class TestApi(TestCase):
 
     def setUp(self):
         self.client = Client()
+        self.auth_string = 'Basic %s' % base64.encodestring('admin:admin').rstrip()
 
     def test_invalid_auth_header(self):
         response = self.client.get('/api/goals/')
         self.assertEquals(response.status_code, 401)
 
     def test_return_goals_by_user(self):
-        auth_string = 'Basic %s' % base64.encodestring('admin:admin').rstrip()
-        response = self.client.get('/api/goals/', HTTP_AUTHORIZATION=auth_string)
+        response = self.client.get('/api/goals/', HTTP_AUTHORIZATION=self.auth_string)
         self.assertEquals(200, response.status_code) 
 
+    def test_add_goal(self):
+        data = dict(latitude='0', longitude='0')
+        response = self.client.post('/api/goals/add/', data, content_type='application/json', HTTP_AUTHORIZATION=self.auth_string)
+        self.assertEquals(200, response.status_code) 
