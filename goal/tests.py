@@ -52,5 +52,5 @@ class TestApi(TestCase):
 
     def test_add_goal(self):
         data = dict(desc='Teste', latitude='-20.9999', longitude='-62111.999')
-        response = self.client.post('/api/goals/add/', data, HTTP_AUTHORIZATION=self.auth_string)
+        response = self.client.post('/api/add/', data, HTTP_AUTHORIZATION=self.auth_string)
         self.assertEquals(200, response.status_code) 

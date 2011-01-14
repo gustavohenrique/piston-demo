@@ -11,5 +11,5 @@ urlpatterns = patterns('',
     (r'^goals/$', goal_resource),
     (r'^goals/(?P<pk>[^/]+)', goal_resource),
     #(r'^goals/(?P<sigla_estado>[^/]+)', cidade_resource),
-    (r'^goals/add/$', goal_resource),
+    (r'^add/$', goal_resource),
 )
